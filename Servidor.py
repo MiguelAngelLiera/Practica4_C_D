@@ -10,7 +10,7 @@ PCG_dado = 0
 class Servidor:
 
 	"""
-	Constructor de la clase Servidor .
+	Constructor de la clase Servidor
 	"""
 	def __init__(self):
 		self.clientes =[]
@@ -120,7 +120,7 @@ class Servidor:
 							respuesta = respuesta.decode('UTF-8')
 							print("cliente respondio >> " + str(respuesta))
 							lista_res = respuesta.split()
-							print(respuesta)
+							#print(respuesta)
 							if lista_res[1] == "#cliente":
 								respuesta = re.sub(f"\#cliente|\'|\ {lista_res[2]}","",respuesta)
 								respuesta = respuesta.replace(lista_res[0],"")
@@ -136,9 +136,9 @@ class Servidor:
 							elif lista_res[1] == "#nombre":
 								print(respuesta)
 								lista_nombre_correo = respuesta.split("|")
-								print(str(lista_nombre_correo))
+								#print(str(lista_nombre_correo))
 								self.lista_usuarios.append((str(lista_nombre_correo[1]),str(lista_nombre_correo[2])))
-								print(str(self.lista_usuarios))
+								#print(str(self.lista_usuarios))
 								self.nombres_clientes.append((str(lista_res[0]), c))
 								usrs = str(self.lista_usuarios)
 								c.send(usrs.encode())
@@ -180,9 +180,9 @@ class Servidor:
 									
 									c.send(("ERROR: Usuario no encontrado, intenta de nuevo...").encode())
 								else:
-									print("Voy a mandar: " + msg + " a " + str(cliente_temp))
+									#print("Voy a mandar: " + msg + " a " + str(cliente_temp))
 									cliente_temp.send(msg.encode())
-									print("Ya se lo envie")
+									#print("Ya se lo envie")
 									#c.send(("@respd " + lista_res[0] + " " + respuesta).encode())
 							elif lista_res[1] == "#PCG":
 								msg = "@PCG_dado " + lista_res[2] + " " + lista_res[0]
@@ -196,7 +196,7 @@ class Servidor:
 								nombre_c = ""
 								for parte in lista_res[2:]:
 									nombre_c = nombre_c + " " + parte
-								print((nombre_c[1:],str(lista_res[0])))
+								#print((nombre_c[1:],str(lista_res[0])))
 								self.lista_usuarios.remove((nombre_c[1:],lista_res[0]))
 							else:
 								respuesta = respuesta.replace(lista_res[0], "")
