@@ -10,7 +10,7 @@ PCG_dado = 0
 class Servidor:
 
 	"""
-	Constructor de la clase Servidor
+	Constructor de la clase Servidor .
 	"""
 	def __init__(self):
 		self.clientes =[]
